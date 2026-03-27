@@ -7,13 +7,14 @@ class Settings(BaseSettings):
     This reads from environment variables or a .env file automatically.
     """
     bot_token: str
-    database_url: str = "sqlite+aiosqlite:///app.sqlite"
+    database_url: str = "sqlite+aiosqlite:///storage/app.sqlite"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
     def ensure_directories(self):
         # List of required folders (e.g. for logs or audio files we might store later)
-        required_folders = ["logs", "storage"]
+        # We need "logs" for errors.log, "storage" for the database, and "storage/temp_audio" for Voice messages
+        required_folders = ["logs", "storage", "storage/temp_audio"]
         
         for folder in required_folders:
             # os.makedirs creates the folder for you.
