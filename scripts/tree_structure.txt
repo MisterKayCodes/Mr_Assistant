@@ -43,6 +43,7 @@ scripts/
     tree_structure.txt # Blueprint for tree_generator
 tests/
     __init__.py
+MISTER_AI_RULES.md # Critical AI instructions for any new project
 .env.example # Environment variable template
 requirements.txt # Project dependencies
 run.py # Dev bootstrapper

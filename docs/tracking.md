@@ -1,18 +1,21 @@
-# 🔄 Session Tracker
+# 🎯 Phase Tracker & Dev Log
 
-Updates to this file trigger the `git_sync.py` automation. The agent must add a new entry for every feature or refactor.
+This file exists to give you a 2-second snapshot of exactly where we are in the project right now, and what was just completed.
 
----
-
-| Date | Time | Task/Commit Message | Status |
-| :--- | :--- | :--- | :--- |
-| 2026-03-24 | 14:00 | `Initialize project architecture` | ✅ |
+### 📍 CURRENT STATUS: **Phase 1.2 - Repository Layer**
+* **Active Goal:** Implement `app/data/repository.py` to write the actual insert queries.
+* **Blocker:** None. Proceeding to Repository Layer.
 
 ---
 
-## 🧠 Decision Log
-Record major architectural trade-offs here. (e.g., "Why did we use SQLite instead of PostgreSQL? Because it's an MVP.")
+### 📝 Changelog / Completed Phases
 
-| Date | Topic | Decision & Rationale |
-| :--- | :--- | :--- |
-| YYYY-MM-DD | Example | Decided to use X because Y |
+#### ✅ Phase 1.0 (Environment & Foundation)
+- [x] Initialized virtual environment (`venv`).
+- [x] Installed precise Senior-level libraries (`aiogram>=3`, `sqlalchemy>=2`, `pydantic-settings`).
+- [x] Configured `app/utils/config.py` with self-healing folder generation (`logs/`, `storage/temp_audio/`).
+- [x] Built the strict 4-zone directory architecture (Mouth, Brain, Wires, Memory).
+
+#### ✅ Phase 1.1 (Engine & Models Built)
+- [x] `app/data/database.py`: Hooked up async SQLite with strict `WAL Mode` for concurrency.
+- [x] `app/data/models.py`: Built the `Message` table with `BigInteger` for Telegram IDs and strict Python `Enum` values to avoid string typos.
