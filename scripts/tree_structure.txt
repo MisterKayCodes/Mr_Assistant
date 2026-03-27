@@ -1,37 +1,51 @@
 app/
     bot/
         __init__.py
-        handlers.py # Telegram command and message handlers
-        keyboards.py # UI elements for Telegram
+        main.py # AioGram dispatcher setup
+        handlers/
+            __init__.py
+            base.py # /start, /help
+            messages.py # Text and Voice entry points
+            reports.py # /weekly and /ideas
+        middlewares/
+            __init__.py
     core/
         __init__.py
-        media_processor.py # Pure logic and data transformations
-    data/
-        __init__.py
-        repository.py # Database and file persistence
-    schemas/
-        __init__.py
-        user.py # Pydantic or dataclasses for Interface Layer
+        logic.py # Decision making (is it an idea? a mood?)
+        schemas.py # Pydantic models (Structured JSON format)
+        formatter.py # Clean text formatting for reports
     services/
         __init__.py
-        external_api.py # External API connections
+        openai_api.py # GPT summarization logic
+        whisper_api.py # Voice-to-Text logic
+        audio_proc.py # FFmpeg conversion (ogg -> mp3)
+    data/
+        __init__.py
+        models.py # SQLAlchemy / Alembic models
+        database.py # Engine and Session setup
+        repository.py # CRUD operations (save_msg, get_weekly)
     utils/
         __init__.py
-        logger.py # Shared logging utility
+        logger.py # Custom logging setup
+        config.py # Env variable loader (Pydantic Settings)
 docs/
     task.md # Project roadmap
     tracking.md # Session and git sync tracker
+    course.md # High-level architecture guide
+    architecture.md # Rules for the Inspector
+migrations/ # Alembic migration files
 personal/
     learning.md # Developer learning ledger
 scripts/
     architecture_inspector.py # Ported maintenance script
     git_sync.py # Automated git tool
+    tree_generator.py # Generates project folders
+    tree_structure.txt # Blueprint for tree_generator
 tests/
     __init__.py
-config.py # Central configuration
-main.py # Core entry point
 .env.example # Environment variable template
 requirements.txt # Project dependencies
 run.py # Dev bootstrapper
 run.bat # Quick start
 setup.bat # Environment setup
+alembic.ini # Database migration config
