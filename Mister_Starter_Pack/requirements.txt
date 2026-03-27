@@ -1,8 +1,0 @@
-
-#THEY ARE ALL EXAMPLES OF HOW THE REQUIREMENTS.TXT SHOULD LOOKLIKE- (NOTICE HOW THE NAME AND EXACT VERSION IS LISTED)
-aiogram==3.10.0
-requests==2.32.3
-tqdm==4.66.4
-urllib3==2.2.1
-watchfiles==0.21.0
-python-dotenv==1.0.1
