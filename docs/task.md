@@ -10,8 +10,11 @@
 - [x] Phase 1.1: Database Engine (`app/data/database.py` with WAL mode)
 - [x] Phase 1.1: Database Models (`app/data/models.py` with BigInteger and Enum)
 - [x] Phase 1.2: Repository Layer (`app/data/repository.py`)
-- [ ] Phase 1.3: Digital Constitution (`scripts/dev_constitution.py`)
-- [ ] Phase 1.4: Middleware (`app/bot/middlewares/__init__.py` for logging)
+- [x] Phase 1.3: Digital Constitution (`scripts/dev_constitution.py`)
+- [x] Phase 1.4: Middleware (`app/bot/middlewares/logging.py`)
+### 📍 CURRENT STATUS: **Phase 1.5 - Message Handlers**
+* **Active Goal:** Implement `app/bot/handlers/base.py` and `messages.py` to route Telegram updates to our Brain.
+* **Blocker:** None. Proceeding to Handlers.
 - [ ] Phase 1.5: Handlers (`app/bot/handlers/base.py`, `app/bot/handlers/messages.py`)
 - [ ] Phase 1.6: Bot Entry Point (`app/bot/main.py`)
 

@@ -10,11 +10,15 @@ class Settings(BaseSettings):
     database_url: str = "sqlite+aiosqlite:///storage/app.sqlite"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    
+    # Path constants for "Self-Healing" logic (Annotated for Pydantic)
+    BASE_DIR: str = os.path.dirname(os.path.abspath(__file__))
+    LOGS_DIR: str = "logs"
+    STORAGE_DIR: str = "storage"
+    TEMP_AUDIO_DIR: str = "storage/temp_audio"
 
     def ensure_directories(self):
-        # List of required folders (e.g. for logs or audio files we might store later)
-        # We need "logs" for errors.log, "storage" for the database, and "storage/temp_audio" for Voice messages
-        required_folders = ["logs", "storage", "storage/temp_audio"]
+        required_folders = [self.LOGS_DIR, self.STORAGE_DIR, self.TEMP_AUDIO_DIR]
         
         for folder in required_folders:
             # os.makedirs creates the folder for you.
