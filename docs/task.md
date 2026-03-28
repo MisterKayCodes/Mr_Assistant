@@ -9,12 +9,11 @@
 - [x] Phase 1.0: Environment & Config (`requirements.txt`, `.env`, `config.py`)
 - [x] Phase 1.1: Database Engine (`app/data/database.py` with WAL mode)
 - [x] Phase 1.1: Database Models (`app/data/models.py` with BigInteger and Enum)
-### 📍 CURRENT STATUS: **Phase 1.2 - Repository Layer**
-* **Active Goal:** Implement `app/data/repository.py` to write the actual insert queries.
-* **Blocker:** None. Proceeding to Repository Layer. (`app/data/repository.py`)
-- [ ] Phase 1.3: Middleware (`app/bot/middlewares/__init__.py` for logging)
-- [ ] Phase 1.4: Handlers (`app/bot/handlers/base.py`, `app/bot/handlers/messages.py`)
-- [ ] Phase 1.5: Bot Entry Point (`app/bot/main.py`)
+- [x] Phase 1.2: Repository Layer (`app/data/repository.py`)
+- [ ] Phase 1.3: Digital Constitution (`scripts/dev_constitution.py`)
+- [ ] Phase 1.4: Middleware (`app/bot/middlewares/__init__.py` for logging)
+- [ ] Phase 1.5: Handlers (`app/bot/handlers/base.py`, `app/bot/handlers/messages.py`)
+- [ ] Phase 1.6: Bot Entry Point (`app/bot/main.py`)
 
 ## Phase 2 (Day 2): Text Summarization
 - [ ] GPT API integration for text summarization
