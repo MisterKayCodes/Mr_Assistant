@@ -1,17 +1,13 @@
 from datetime import datetime
 from enum import Enum
 from typing import Optional, Any
+from app.core.schemas import MessageType
 from sqlalchemy import BigInteger, String, JSON, DateTime
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 class Base(DeclarativeBase):
     pass
 
-# --- THE SENIOR FIX: Enums for foolproof typing ---
-class MessageType(str, Enum):
-    TEXT = "text"
-    VOICE = "voice"
-    IDEA = "idea"
 
 class Message(Base):
     __tablename__ = "messages"

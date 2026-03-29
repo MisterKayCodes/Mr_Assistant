@@ -12,10 +12,10 @@
 - [x] Phase 1.2: Repository Layer (`app/data/repository.py`)
 - [x] Phase 1.3: Digital Constitution (`scripts/dev_constitution.py`)
 - [x] Phase 1.4: Middleware (`app/bot/middlewares/logging.py`)
-### 📍 CURRENT STATUS: **Phase 1.5 - Message Handlers**
-* **Active Goal:** Implement `app/bot/handlers/base.py` and `messages.py` to route Telegram updates to our Brain.
-* **Blocker:** None. Proceeding to Handlers.
-- [ ] Phase 1.5: Handlers (`app/bot/handlers/base.py`, `app/bot/handlers/messages.py`)
+- [x] Phase 1.5: Handlers (`app/bot/handlers/base.py`, `app/bot/handlers/messages.py`)
+### 📍 CURRENT STATUS: **Phase 1.6 - Bot Entry Point**
+* **Active Goal:** Implement `main.py` to initialize the dispatcher and start polling.
+* **Blocker:** None. Proceeding to Entry Point.
 - [ ] Phase 1.6: Bot Entry Point (`app/bot/main.py`)
 
 ## Phase 2 (Day 2): Text Summarization

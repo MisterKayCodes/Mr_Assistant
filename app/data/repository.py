@@ -1,6 +1,7 @@
 from sqlalchemy import select
 from app.data.database import async_session_maker
-from app.data.models import Message, MessageType
+from app.data.models import Message
+from app.core.schemas import MessageType
 from app.utils.logger import logger
 
 # THE MISTER ASSISTANT WAY: The "Waiter" who handles the mess.
