@@ -16,9 +16,12 @@
 ### 📍 CURRENT STATUS: **Phase 1.6 - Bot Entry Point**
 * **Active Goal:** Implement `main.py` to initialize the dispatcher and start polling.
 * **Blocker:** None. Proceeding to Entry Point.
-- [ ] Phase 1.6: Bot Entry Point (`app/bot/main.py`)
+- [x] Phase 1.6: Bot Entry Point (`app/bot/main.py`)
 
 ## Phase 2 (Day 2): Text Summarization
+### 📍 CURRENT STATUS: **Phase 2.0 - GPT Integration**
+* **Active Goal:** Integrate GPT API for text summarization.
+* **Blocker:** None.
 - [ ] GPT API integration for text summarization
 - [ ] Update DB schema for JSON summary
 - [ ] Store summary in DB
