@@ -7,7 +7,7 @@ from app.utils.logger import logger
 # THE MISTER ASSISTANT WAY: The "Waiter" who handles the mess.
 # Rules strictly followed: Async, DAL/Repository pattern, error handling.
 
-async def save_message(user_id: int, raw_text: str, msg_type: MessageType = MessageType.TEXT) -> bool:
+async def save_message(user_id: int, raw_text: str, msg_type: MessageType = MessageType.TEXT, summary: dict = None) -> bool:
     """
     Saves a message to the 'Memory' layer.
     Returns True if successful, False otherwise.
@@ -17,7 +17,8 @@ async def save_message(user_id: int, raw_text: str, msg_type: MessageType = Mess
             new_msg = Message(
                 user_id=user_id,
                 raw_text=raw_text,
-                type=msg_type.value
+                type=msg_type.value,
+                summary=summary
             )
             session.add(new_msg)
             await session.commit()

@@ -13,18 +13,15 @@
 - [x] Phase 1.3: Digital Constitution (`scripts/dev_constitution.py`)
 - [x] Phase 1.4: Middleware (`app/bot/middlewares/logging.py`)
 - [x] Phase 1.5: Handlers (`app/bot/handlers/base.py`, `app/bot/handlers/messages.py`)
-### 📍 CURRENT STATUS: **Phase 1.6 - Bot Entry Point**
-* **Active Goal:** Implement `main.py` to initialize the dispatcher and start polling.
-* **Blocker:** None. Proceeding to Entry Point.
 - [x] Phase 1.6: Bot Entry Point (`app/bot/main.py`)
+- [x] Phase 1.7: Cleanup & Organization (Command Vault, Manual, Classification)
 
 ## Phase 2 (Day 2): Text Summarization
-### 📍 CURRENT STATUS: **Phase 2.0 - GPT Integration**
-* **Active Goal:** Integrate GPT API for text summarization.
-* **Blocker:** None.
-- [ ] GPT API integration for text summarization
-- [ ] Update DB schema for JSON summary
-- [ ] Store summary in DB
+- [x] Phase 2.0: Environment & API Config (`config.py`, `.env`)
+- [/] Phase 2.1: GPT Service Layer (`app/services/gpt.py`)
+- [ ] Phase 2.2: The Brain Integration (`app/core/logic.py`)
+- [ ] Phase 2.3: Repository Summary Updates (`app/data/repository.py`)
+- [ ] Phase 2.4: Bot Integration & Feedback Loop
 
 ## Phase 3 (Day 3): Weekly Report
 - [ ] Implement `/weekly` command

@@ -23,7 +23,7 @@ def setup_logger(name: str = "mr_assistant"):
     os.makedirs(log_dir, exist_ok=True)
     log_file = log_dir / "app.log"
     file_handler = RotatingFileHandler(
-        log_file, maxBytes=5*1024*1024, backupCount=3 # 5MB per file, keep 3
+        log_file, maxBytes=5*1024*1024, backupCount=3, encoding="utf-8" # 5MB per file, keep 3
     )
     file_formatter = logging.Formatter(
         '%(asctime)s - %(name)s - %(levelname)s - [%(filename)s:%(lineno)d] - %(message)s'

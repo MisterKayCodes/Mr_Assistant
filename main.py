@@ -1,53 +1,70 @@
 import asyncio
 import sys
-from aiogram import Bot, Dispatcher
-from config import config
-from app.bot.handlers import router as main_router
-from app.bot.middlewares.logging import LoggingMiddleware
-from app.utils.logger import logger
 
 # THE ORCHESTRATOR: The Conductor of the Mr. Assistant Symphony.
 # Rules: Senior-level assembly, zero logic leaks, safe shutdown.
 
 async def main():
-    # 1. Initialize Bot and Dispatcher
+    """
+    The Heart of the Bot.
+    SENIOR REFINE: Simplified stable initialization for Windows.
+    """
+    # 1. Lazy Imports (Directly before use to avoid import deadlocks)
+    from aiogram import Bot, Dispatcher
+    from config import config
+    from app.bot.handlers import router as main_router
+    from app.bot.middlewares.logging import LoggingMiddleware
+    from app.utils.logger import logger
+    from app.services.gpt import gpt_service
+
+    print("BOT HEART STRIKING...", flush=True)
+
+    # Ensure directories are ready
+    config.ensure_directories()
+
+    # 2. Standard Bot Initialization (Let aiogram manage the session)
     bot = Bot(token=config.bot_token)
     dp = Dispatcher()
     
-    # 2. The "Shadow" Logger (Rule 16: Security & Safety)
-    # Catching if we've loaded the wrong token before we do anything else.
     try:
-        bot_user = await bot.get_me()
-        logger.info(f"🚀 {bot_user.full_name} is coming online! (@{bot_user.username})")
-    except Exception as e:
-        logger.critical(f"❌ Failed to fetch bot info. Check your BOT_TOKEN! Error: {e}")
-        return
+        # 3. PULSE CHECK: Verify GPT Connectivity
+        if await gpt_service.health_check():
+            print("[OK] Intelligence Verified: GPT-4o-mini is responsive.", flush=True)
+            logger.info("STARTUP: GPT Service is online.")
+        else:
+            print("[!] Intelligence Offline: Entering Text-Only Limp Mode.", flush=True)
+            logger.warning("STARTUP: GPT Service failed health check. Intelligence is offline.")
 
-    # 3. Register Middleware (The Bouncer)
-    dp.update.middleware(LoggingMiddleware())
+        # 4. Connection Check (Telegram)
+        try:
+            bot_user = await asyncio.wait_for(bot.get_me(), timeout=10.0)
+            logger.info(f"STARTUP: {bot_user.full_name} is online! (@{bot_user.username})")
+        except Exception:
+            logger.warning("WARNING: Initial connection check skipped. Entering polling...")
 
-    # 4. Register Routers (The Orchestrated List)
-    dp.include_router(main_router)
+        # 5. Register Bouncer & Routers
+        dp.update.middleware(LoggingMiddleware())
+        dp.include_router(main_router)
 
-    # 5. Assembly Complete. Start Polling.
-    logger.info("📡 Mr. Assistant Dispatcher initialized. Starting polling...")
-    
-    try:
-        # We skip updates that happened while the bot was offline to avoid "Spam Storms"
+        # 6. Start Polling
+        logger.info("INIT: Polling logic activated.")
+        print(">>> DISPATCHER ACTIVE: BOT IS LISTENING...", flush=True)
         await dp.start_polling(bot, skip_updates=True)
+
     except Exception as e:
-        logger.critical(f"❌ Bot Polling crashed: {e}", exc_info=True)
+        logger.critical(f"CRASH: Bot loop failure: {e}")
     finally:
-        # SENIOR REFINE: The "Clean Exit" Rule.
-        # Closing the bot session ensures resources are freed safely.
+        # 7. Clean Exit
         await bot.session.close()
-        logger.info("🧠 Memory layer safely detached.")
-        logger.info("💤 Mr. Assistant is going to sleep. Goodbye.")
+        logger.info("EXIT: Heart stopped safely.")
 
 if __name__ == "__main__":
     try:
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):
-        # We don't log a stack trace for Ctrl+C, just a clean exit.
-        logger.info("Keyboard interrupt received. Exiting gracefully...")
         sys.exit(0)
+    except Exception as e:
+        import logging
+        logging.basicConfig(level=logging.ERROR)
+        logging.getLogger(__name__).critical(f"FATAL: Uncaught error: {e}")
+        sys.exit(1)

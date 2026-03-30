@@ -1,4 +1,7 @@
 @echo off
+setlocal
+set PYTHONUNBUFFERED=1
+
 title X Media Scraper Bot
 echo [!] Waking up the organism...
 
@@ -23,6 +26,6 @@ if not exist "requirements.txt" (
     )
 )
 
-echo [!] Starting bot...
-python main.py
+echo [!] Starting bot via Senior Orchestrator...
+python run.py
 pause

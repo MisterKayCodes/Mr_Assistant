@@ -40,6 +40,14 @@ This file exists to give you a 2-second snapshot of exactly where we are in the 
 
 #### ✅ Phase 1.6 (The Final Assembly)
 - [x] `main.py`: Implemented the **Orchestrator** with shadow logging and clean exit.
-- [x] **Refinement:** Upgraded `#idea` detection with regex `(?i)#idea\b`.
+- [x] **Hardening:** Implemented `PYTHONUNBUFFERED` and `AiohttpSession` for Windows stability.
 - [x] **Verified:** Passed Digital Constitution and Architecture Inspection.
-- [x] **Verified:** Successful "Idea Test" (Simulated end-to-end msg path).
+
+#### ✅ Phase 1.7 (Cleanup & Organization) 🎯
+- [x] **Classification:** Organized `scripts/` into `core/`, `maintenance/`, `tests/`, and `tools/`.
+- [x] **Command Vault:** Initialized `docs/commands/` for project reproducibility.
+- [x] **Manual:** Created `docs/teachme.md` for easy script onboarding.
+
+### 📍 CURRENT STATUS: **Phase 2.0 - GPT Integration**
+* **Active Goal:** Integrate GPT API for text summarization.
+* **Blocker:** None. Proceeding to Brain augmentation.

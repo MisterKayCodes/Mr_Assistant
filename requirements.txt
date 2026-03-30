@@ -3,3 +3,5 @@ sqlalchemy[asyncio]>=2.0
 aiosqlite
 pydantic-settings
 python-dotenv
+watchfiles
+openai

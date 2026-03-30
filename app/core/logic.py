@@ -14,12 +14,18 @@ def analyze_message(user_id: int, text: str) -> ProcessedMessage:
     clean_text = text.strip()
     
     # SENIOR REFINE: Use regex to ensure we only match #idea as a whole word.
-    # (?i) = case insensitive, \b = word boundary.
-    # This prevents matching #ideal, #ideology, etc.
-    if re.search(r"(?i)#idea\b", clean_text):
+    # We also added natural triggers like "I have an idea" for better UX.
+    idea_patterns = [
+        r"(?i)#idea\b",
+        r"(?i)\bI have an idea\b",
+        r"(?i)\bProject proposal\b",
+        r"(?i)\bNew concept\b"
+    ]
+    
+    if any(re.search(pattern, clean_text) for pattern in idea_patterns):
         is_idea = True
         msg_type = MessageType.IDEA
-        logger.info(f"Brain detected an IDEA via hashtag from user {user_id}")
+        logger.info(f"Brain detected an IDEA via pattern matching from user {user_id}")
     elif clean_text.lower().startswith("/idea"):
         is_idea = True
         msg_type = MessageType.IDEA
